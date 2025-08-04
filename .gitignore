@@ -1,0 +1,81 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Environment files
+.env
+.env.*
+
+# Flask instance folder (optional)
+instance/
+config.py
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# PyCharm settings
+.idea/
+
+# macOS / Linux / Windows system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# Log files
+*.log
+
+# SQLite database (if you're using one locally)
+*.sqlite3
+*.db
+
+# Migrations (if using Flask-Migrate / Alembic)
+migrations/
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+
+# Test output
+.pytest_cache/
+nosetests.xml
+coverage.xml
+test-results/
+
+# Build and distribution
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook checkpoints (if any)
+.ipynb_checkpoints/
+
+# Gunicorn / UWSGI logs or sockets
+*.pid
+*.sock
