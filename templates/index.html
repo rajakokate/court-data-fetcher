@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delhi High Court Search</title>
+  </head>
+  <body>
+    <center>
+      <h2>Search Delhi High Court Case</h2>
+      <form method="POST" action="/search">
+        <label for="">Case Type:</label>
+        <select name="case_type" required>
+          <option value="W.P.(C)">W>P.(C)</option>
+          <option value="CRL.A.">CRL.A.</option>
+          <option value="FAO">FAO</option>
+        </select>
+        <br />
+        <br />
+
+        <label for="">Case Number:</label>
+        <input type="number" name="case_number" required /> <br />
+        <br />
+
+        <label for="">Filling Year:</label>
+        <select name="filing_year" required>
+          {% for year in range(2000,2026) %}
+          <option value="{{ year }}">{{ year }}</option>
+
+          {% endfor %}</select
+        ><br />
+        <br />
+
+        <label for="">Enter Captcha:</label>
+        <input type="text" name="captcha" required /> <br />
+        <br />
+
+        <!--Captcha image-->
+
+        <button type="submit">Search Case</button>
+      </form>
+    </center>
+  </body>
+</html>
