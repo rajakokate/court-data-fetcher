@@ -23,12 +23,25 @@ def parse_case_details (html):
             case_info = cols[1].get_text(strip=True).replace('\n', ' ')
             parties = cols[2].get_text(strip= True).replace('\n', ' ')
             dates = cols[3].get_text(strip= True).replace ('\n', ' ')
+    
+    #latest order link
+    pdf_link = None
+    for a in soup.find_all('a', href=True):
+        href =a ['href']
+        if 'case-type-status-details' in href and 'Orders' in a.text:
+            pdf_link = href
+            break
+    
+    if pdf_link and not pdf_link.startswith('http'):
+        pdf_link = "https://delhihighcourt.nic.in" + pdf_link
 
-        return {   
-            'case info': case_info,
-            'parties': parties,
-            "dates": dates
-        }
+
+    return {   
+        'case info': case_info,
+        'parties': parties,
+        "dates": dates,
+        'pdf_url': pdf_link
+    }
 
 def get_case_status(case_type, case_number,case_year):
     # set up Chrome using web driver manager

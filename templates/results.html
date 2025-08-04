@@ -13,6 +13,15 @@
         <p><strong>Parties:</strong>{{ data.parties }}</p>
         <p><strong>Dates:</strong>{{ data.dates }}</p>
 
+        {% if data.pdf_url %}
+            <p><strong>Latest Order PDF:</strong>
+            <a href="{{ data.pdf_url }}" target="_blank">Orders Pdf</a>
+            </p>
+        {% else %}
+
+        <p><strong>Latest Order pdf: </strong> Not available</p>
+
+        {% endif %}
         <br>
         <a href="/">Search Another case</a>
     </center>

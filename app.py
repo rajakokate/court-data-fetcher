@@ -36,15 +36,27 @@ def search ():
     case_number  = request.form.get('case_number')
     filing_year = request.form.get("filing_year")
 
-    
-
     # call scrapping function 
-    case_data = get_case_status(case_type,case_number,filing_year)
+    try:
+        result = get_case_status(case_type,case_number,filing_year)
+        case_data, raw_html = result
+    except Exception as e:
+        print("Scrapper Error:", e)
+        return '<h3>Error: Error could not fetch case details. Please check your input or try again later</h3>'
+
+    # Insert into database
+    if raw_html:
+        db = get_db()
+        db.execute('''
+            INSERT INTO case_logs (case_type, case_number, filing_year, raw_html)
+            VALUES  (?, ?, ?, ?)
+            ''', (case_type, case_number, filing_year, raw_html))
+        db.commit()
 
     if case_data:
         return render_template('results.html', data = case_data)
     else:
-        return '<h3>No Case data found or invalid CAPTCHA/case info.</h3>'
+        return '<h3>No Case data found. Please verify case_details and try again</h3>'
 
 if __name__ == '__main__':
     app.run(debug=True)
